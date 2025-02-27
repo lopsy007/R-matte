@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from typing import Callable
 
 
 def f_derivative(x, h, f):
@@ -33,3 +34,20 @@ def plot_same(x, y, title="f(x)", min_x=None, max_x=None, min_y=None, max_y=None
         plt.xlim(min_x, max_x)
     if min_y and max_y:
         plt.ylim(min_y, max_y)
+
+def plot_same_with_derivatives(
+        f:Callable[[float], float],
+        x_start:int, 
+        x_end:int, 
+        x_count:int=100,
+        title:str='f(x), f\'(x) and f\'\'(x)', 
+        h:float=0.01
+        ):
+    
+    x = np.linspace(x_start, x_end, x_count)
+    plot_same(x, f(x), 'f(x)')	
+    plot_same(x, f_derivative(x, h, f), 'f\'(x)')
+    plot_same(x, f_2derivative(x, h, f), 'f\'\'(x)')
+    plt.title(title)
+    plt.legend()
+    plt.show()
