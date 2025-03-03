@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 from typing import Callable
 
 
-def f_derivative(x, h, f):
+def f_derivative(x, f, h=0.001):
     return (f(x+h) - f(x))/h
 
-def f_2derivative(x, h, f):
+def f_2derivative(x, f, h=0.001):
     return (f_derivative(x+h, h, f) - f_derivative(x, h, f))/h
 
 def plot_sub(x, y, title, total_plots, plot_number, min_x=None, max_x=None, min_y=None, max_y=None):
