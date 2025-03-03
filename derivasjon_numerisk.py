@@ -7,7 +7,7 @@ def f_derivative(x, f, h=0.001):
     return (f(x+h) - f(x))/h
 
 def f_2derivative(x, f, h=0.001):
-    return (f_derivative(x+h, h, f) - f_derivative(x, h, f))/h
+    return (f_derivative(x+h, f, h) - f_derivative(x, f, h))/h
 
 def plot_sub(x, y, title, total_plots, plot_number, min_x=None, max_x=None, min_y=None, max_y=None):
     plt.subplot(1, total_plots, plot_number)
@@ -46,8 +46,8 @@ def plot_same_with_derivatives(
     
     x = np.linspace(x_start, x_end, x_count)
     plot_same(x, f(x), 'f(x)')	
-    plot_same(x, f_derivative(x, h, f), 'f\'(x)')
-    plot_same(x, f_2derivative(x, h, f), 'f\'\'(x)')
+    plot_same(x, f_derivative(x, f, h), 'f\'(x)')
+    plot_same(x, f_2derivative(x, f, h), 'f\'\'(x)')
     plt.title(title)
     plt.legend()
     plt.show()
